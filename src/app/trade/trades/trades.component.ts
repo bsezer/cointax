@@ -12,6 +12,7 @@ export class TradesComponent implements OnInit {
   public trades: Trade[];
   public selectedTrade: Trade;
   public tradeToAdd: Trade;
+  public editTradeId: number;
   addingTrade = false;
   error: any;
   showNgFor = false;
@@ -49,8 +50,14 @@ export class TradesComponent implements OnInit {
     }, error => (this.error = error));
   }
 
+  edittrade(trade: Trade, event: any): void {
+    event.stopPropagation();
+    this.editTradeId = trade.id;
+  }
+
   ngOnInit(): void {
     this.gettrades();
+    this.editTradeId = -1;
     this.tradeToAdd = new Trade();
   }
 
@@ -65,12 +72,30 @@ export class TradesComponent implements OnInit {
   }
 
   save(): void {
-    console.log('Saving trade ' + this.tradeToAdd.name);
+    console.log('Saving trade with id' + this.tradeToAdd.id);
     this.tradeService.save(this.tradeToAdd).subscribe(trade => {
       this.tradeToAdd = trade; // saved herro, w/ id if new
       this.trades.push(trade);
       this.tradeToAdd = new Trade();
       this.addingTrade = false;
+    }, error => (this.error = error)); // TODO: Display error message
+  }
+
+  cancelEditTrade(): void {
+    this.editTradeId = -1;
+    this.gettrades();
+  }
+
+  saveEditTrade(trade: Trade, event: any): void {
+    event.stopPropagation();
+    console.log('Editing trade with id ' + trade.id);
+    this.tradeService.save(trade).subscribe(tradeResponse => {
+      this.trades.forEach(t => {
+        if (t.id === trade.id) {
+          t = trade;
+        }
+      });
+      this.editTradeId = -1;
     }, error => (this.error = error)); // TODO: Display error message
   }
 

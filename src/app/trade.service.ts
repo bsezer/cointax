@@ -51,9 +51,7 @@ export class TradeService {
   private put(trade: Trade) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-
     const url = `${this.tradesUrl}/${trade.id}`;
-
     return this.http.put<Trade>(url, trade).pipe(catchError(this.handleError));
   }
 

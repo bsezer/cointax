@@ -43,7 +43,7 @@ export class InMemoryDataService {
         other: "Officiis convenire usu."
       },
       {
-        id: 5,
+        id: 4,
         name: 'Brock Lesner',
         tradeType: "Trade",
         transactionDate: "7-07-2018",
@@ -56,7 +56,7 @@ export class InMemoryDataService {
         other: "Ipsum dolor sit amet, convenire usu."
       },
       {
-        id: 6,
+        id: 5,
         name: 'Nicholas DuBuque',
         tradeType: "Trade",
         transactionDate: "9-07-2018",
@@ -69,7 +69,7 @@ export class InMemoryDataService {
         other: "Lorem ipsum dolor sit amet, ex dolorem officiis convenire usu."
       },
       {
-        id: 1,
+        id: 6,
         name: 'Bob the king',
         tradeType: "Trade",
         transactionDate: "10-07-2018",
@@ -82,7 +82,7 @@ export class InMemoryDataService {
         other: "Lorem ipsum dolor sit amet, ex dolorem officiis convenire usu."
       },
       {
-        id: 2,
+        id: 7,
         name: 'Nicholas DuBuque',
         tradeType: "Trade",
         transactionDate: "10-09-2018",
@@ -95,7 +95,7 @@ export class InMemoryDataService {
         other: "Ex dolorem officiis convenire usu."
       },
       {
-        id: 3,
+        id: 8,
         name: 'Niche Name',
         tradeType: "Trade",
         transactionDate: "12-07-2018",
@@ -108,7 +108,7 @@ export class InMemoryDataService {
         other: "Officiis convenire usu."
       },
       {
-        id: 5,
+        id: 9,
         name: 'Brock Lesner',
         tradeType: "Trade",
         transactionDate: "7-07-2018",
@@ -121,7 +121,7 @@ export class InMemoryDataService {
         other: "Ipsum dolor sit amet, convenire usu."
       },
       {
-        id: 6,
+        id: 10,
         name: 'Nicholas DuBuque',
         tradeType: "Trade",
         transactionDate: "9-07-2018",
@@ -134,7 +134,7 @@ export class InMemoryDataService {
         other: "Lorem ipsum dolor sit amet, ex dolorem officiis convenire usu."
       },
       {
-        id: 1,
+        id: 11,
         name: 'Bob the king',
         tradeType: "Trade",
         transactionDate: "10-07-2018",
@@ -147,7 +147,7 @@ export class InMemoryDataService {
         other: "Lorem ipsum dolor sit amet, ex dolorem officiis convenire usu."
       },
       {
-        id: 2,
+        id: 12,
         name: 'Nicholas DuBuque',
         tradeType: "Trade",
         transactionDate: "10-09-2018",
@@ -160,7 +160,7 @@ export class InMemoryDataService {
         other: "Ex dolorem officiis convenire usu."
       },
       {
-        id: 3,
+        id: 13,
         name: 'Niche Name',
         tradeType: "Trade",
         transactionDate: "12-07-2018",
@@ -173,7 +173,7 @@ export class InMemoryDataService {
         other: "Officiis convenire usu."
       },
       {
-        id: 5,
+        id: 14,
         name: 'Brock Lesner',
         tradeType: "Trade",
         transactionDate: "7-07-2018",
@@ -186,7 +186,7 @@ export class InMemoryDataService {
         other: "Ipsum dolor sit amet, convenire usu."
       },
       {
-        id: 6,
+        id: 15,
         name: 'Nicholas DuBuque',
         tradeType: "Trade",
         transactionDate: "9-07-2018",
