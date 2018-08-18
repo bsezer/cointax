@@ -1,0 +1,9 @@
+<h3>Top trades</h3>
+<div class="grid grid-pad">
+  <div *ngFor="let trade of trades" (click)="gotoDetail(trade)" class="col-1-4">
+    <div class="module trade">
+      <h4>{{trade.name}}</h4>
+    </div>
+  </div>
+</div>
+<my-trade-search></my-trade-search>
