@@ -32,9 +32,7 @@ export class TradeService {
   delete(trade: Trade) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-
     const url = `${this.tradesUrl}/${trade.id}`;
-
     return this.http.delete<Trade>(url).pipe(catchError(this.handleError));
   }
 

@@ -9,8 +9,9 @@ import { Trade } from '../../interfaces/trade';
   styleUrls: ['./trades.component.css']
 })
 export class TradesComponent implements OnInit {
-  trades: Trade[];
-  selectedTrade: Trade;
+  public trades: Trade[];
+  public selectedTrade: Trade;
+  public tradeToAdd: Trade;
   addingTrade = false;
   error: any;
   showNgFor = false;
@@ -50,11 +51,27 @@ export class TradesComponent implements OnInit {
 
   ngOnInit(): void {
     this.gettrades();
+    this.tradeToAdd = new Trade();
   }
 
   onSelect(trade: Trade): void {
     this.selectedTrade = trade;
     this.addingTrade = false;
+  }
+
+  cancel(): void {
+    this.tradeToAdd = new Trade()
+    this.addingTrade = false;
+  }
+
+  save(): void {
+    console.log('Saving trade ' + this.tradeToAdd.name);
+    this.tradeService.save(this.tradeToAdd).subscribe(trade => {
+      this.tradeToAdd = trade; // saved herro, w/ id if new
+      this.trades.push(trade);
+      this.tradeToAdd = new Trade();
+      this.addingTrade = false;
+    }, error => (this.error = error)); // TODO: Display error message
   }
 
   gotoDetail(): void {

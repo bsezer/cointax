@@ -1,48 +1,76 @@
 <h2>My trades</h2>
-<div class="trades">
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Trade Type</th>
-        <th scope="col">Transaction Date</th>
-        <th scope="col">Buy Amount</th>
-        <th scope="col">Currency</th>
-        <th scope="col">Sell Amount</th>
-        <th scope="col">Currency</th>
-        <th scope="col">Trading Fee Amount</th>
-        <th scope="col">Trading Fee Currency</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let trade of trades" (click)="onSelect(trade)" [class.selected]="trade === selectedtrade">
-        <td>              
-          <span scope="row" class="badge">{{trade.id}}</span> 
-        </td>
-        <td scope="row">{{trade.name}}</td>
-        <td scope="row">{{trade.tradeType}}</td>
-        <td scope="row">{{trade.transactionDate}}</td>
-        <td scope="row">{{trade.buyAmount}}</td>
-        <td scope="row">{{trade.buyCurrency}}</td>
-        <td scope="row">{{trade.sellAmount}}</td>
-        <td scope="row">{{trade.sellCurrency}}</td>     
-        <td scope="row">{{trade.tradingFeeAmount}}</td>
-        <td scope="row">{{trade.tradingFeeCurrency}}</td>
-        <p>              
-          <button class="delete-button" (click)="deletetrade(trade, $event)">Delete</button>
-        <p>
-      </tr>
-    </tbody>
-  </table>
+<div class="card" style="width: 100%;">
+  <div class="card-body">
+      <div class="trades">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Trade Type</th>
+              <th scope="col">Transaction Date</th>
+              <th scope="col">Buy Amount</th>
+              <th scope="col">Currency</th>
+              <th scope="col">Sell Amount</th>
+              <th scope="col">Currency</th>
+              <th scope="col">Trading Fee Amount</th>
+              <th scope="col">Trading Fee Currency</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let trade of trades" (click)="onSelect(trade)" [class.selected]="trade === selectedtrade">
+              <td>              
+                <span scope="row" class="badge">{{trade.id}}</span> 
+              </td>
+              <td scope="row">{{trade.name}}</td>
+              <td scope="row">{{trade.tradeType}}</td>
+              <td scope="row">{{trade.transactionDate}}</td>
+              <td scope="row">{{trade.buyAmount}}</td>
+              <td scope="row">{{trade.buyCurrency}}</td>
+              <td scope="row">{{trade.sellAmount}}</td>
+              <td scope="row">{{trade.sellCurrency}}</td>     
+              <td scope="row">{{trade.tradingFeeAmount}}</td>
+              <td scope="row">{{trade.tradingFeeCurrency}}</td>
+              <p>              
+                <button class="delete-button" (click)="deletetrade(trade, $event)">Delete</button>
+              <p>
+            </tr>
+            <br>
+            <tr class="form-group row">
+              <td class="col-2" scope="row">
+                <span scope="row" class="badge">#</span> 
+              </td>
+            <!-- <tr class="d-flex" (click)="onSelect(trade)" [class.selected]="trade === selectedtrade"> -->
+              <td class="col-xs-2" scope="row"><input disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.name" type="text"></td>
+              <td class="col-xs-2" scope="row"><input disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.tradeType" type="text"></td>
+              <td scope="row"><input disabled="{{!addingTrade}}"  [(ngModel)]="tradeToAdd.transactionDate" type="text"></td>
+              <td class="col-1" scope="row"><input disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.buyAmount" type="text"></td>
+              <td class="col-1" scope="row"><input disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.buyCurrency" type="text"></td>
+              <td class="col-1" scope="row"><input disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.sellAmount" type="text"></td>
+              <td class="col-1" scope="row"><input disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.sellCurrency" type="text"></td>     
+              <td class="col-1" scope="row"><input disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.tradingFeeAmount" type="text" ></td>
+              <td class="col-1" scope="row"><input disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.tradingFeeCurrency" type="text"></td>
+              <td class="col-1" scope="row">
+                <button *ngIf="addingTrade" class="delete-button" (click)="cancel()">Cancel</button>
+                <button *ngIf="addingTrade" class="save-button" (click)="save()">Save</button>
+                <button *ngIf="!addingTrade"  class="save-button" (click)="addtrade()">
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Add Trade
+                </button>
+              </td>
+              <div class="error" *ngIf="error">{{error}}</div>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
 </div>
 
 
-<div class="error" *ngIf="error">{{error}}</div>
+<!-- <div class="error" *ngIf="error">{{error}}</div>
 <button (click)="addtrade()">Add New Trade</button>
 <div *ngIf="addingTrade">
   <my-trade-detail (close)="close($event)"></my-trade-detail>
-</div>
+</div> -->
 
 <div *ngIf="selectedtrade">
   <h2>
