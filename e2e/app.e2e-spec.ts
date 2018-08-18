@@ -9,6 +9,6 @@ describe('blank App', () => {
 
   it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Tour of trades');
+    expect(page.getParagraphText()).toEqual('Trades');
   });
 });

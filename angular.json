@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tour-of-heroes": {
+    "cointax": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -48,18 +48,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "tour-of-heroes:build"
+            "browserTarget": "cointax:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "tour-of-heroes:build:production"
+              "browserTarget": "cointax:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tour-of-heroes:build"
+            "browserTarget": "cointax:build"
           }
         },
         "test": {
@@ -91,7 +91,7 @@
         }
       }
     },
-    "tour-of-heroes-e2e": {
+    "cointax-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -100,7 +100,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "tour-of-heroes:serve"
+            "devServerTarget": "cointax:serve"
           }
         },
         "lint": {
@@ -115,7 +115,7 @@
       }
     }
   },
-  "defaultProject": "tour-of-heroes",
+  "defaultProject": "cointax",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "my",
