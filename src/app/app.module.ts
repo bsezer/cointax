@@ -9,11 +9,11 @@ import { InMemoryDataService } from './in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { tradeService } from './trade.service';
-import { DashboardComponent } from './dashboard.component';
-import { TradesComponent } from './trades.component';
-import { tradeDetailComponent } from './trade-detail.component';
-import { tradeSearchComponent } from './trade-search.component';
+import { TradeService } from './trade.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { TradesComponent } from './trade/trades/trades.component';
+import { TradeDetailComponent } from './trade/trade-detail/trade-detail.component';
+import { TradeSearchComponent } from './trade/trade-search/trade-search.component';
 
 @NgModule({
   imports: [
@@ -30,11 +30,11 @@ import { tradeSearchComponent } from './trade-search.component';
   declarations: [
     AppComponent,
     DashboardComponent,
-    tradeSearchComponent,
+    TradeSearchComponent,
     TradesComponent,
-    tradeDetailComponent,
+    TradeDetailComponent,
   ],
-  providers: [tradeService],
+  providers: [TradeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

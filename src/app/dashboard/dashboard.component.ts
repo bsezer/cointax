@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { tradeService } from './trade.service';
-import { Trade } from './interfaces/trade';
+import { TradeService } from '.././trade.service';
+import { Trade } from '../interfaces/trade';
 
 @Component({
   selector: 'my-dashboard',
@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private tradeService: tradeService) {
+    private tradeService: TradeService) {
   }
 
   ngOnInit(): void {

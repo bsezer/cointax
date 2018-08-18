@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DashboardComponent } from './dashboard.component';
-import { TradesComponent } from './trades.component';
-import { tradeDetailComponent } from './trade-detail.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { TradesComponent } from './trade/trades/trades.component';
+import { TradeDetailComponent } from './trade/trade-detail/trade-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'detail/:id', component: tradeDetailComponent },
+  { path: 'detail/:id', component: TradeDetailComponent },
   { path: 'trades', component: TradesComponent }
 ];
 

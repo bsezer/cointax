@@ -5,7 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Trade } from './interfaces/trade';
 
 @Injectable()
-export class tradeService {
+export class TradeService {
   private tradesUrl = 'app/trades'; // URL to web api
 
   constructor(private http: HttpClient) {}

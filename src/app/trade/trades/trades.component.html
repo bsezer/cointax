@@ -40,7 +40,7 @@
 
 <div class="error" *ngIf="error">{{error}}</div>
 <button (click)="addtrade()">Add New Trade</button>
-<div *ngIf="addingtrade">
+<div *ngIf="addingTrade">
   <my-trade-detail (close)="close($event)"></my-trade-detail>
 </div>
 

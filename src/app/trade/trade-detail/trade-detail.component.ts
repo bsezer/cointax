@@ -1,25 +1,26 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { tradeService } from './trade.service';
-import { Trade } from './interfaces/trade';
+import { TradeService } from '../../trade.service';
+import { Trade } from '../../interfaces/trade';
 
 @Component({
   selector: 'my-trade-detail',
   templateUrl: './trade-detail.component.html',
   styleUrls: ['./trade-detail.component.css']
 })
-export class tradeDetailComponent implements OnInit {
+export class TradeDetailComponent implements OnInit {
   @Input() trade: Trade;
   @Output() close = new EventEmitter();
   error: any;
   navigated = false; // true if navigated here
 
   constructor(
-    private tradeService: tradeService,
+    private tradeService: TradeService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    console.log('Here');
     this.route.params.forEach((params: Params) => {
       if (params['id'] !== undefined) {
         const id = +params['id'];

@@ -7,8 +7,8 @@ import {
   distinctUntilChanged,
   switchMap
 } from 'rxjs/operators';
-import { tradeSearchService } from './trade-search.service';
-import { Trade } from './interfaces/trade';
+import { tradeSearchService } from '../../trade-search.service';
+import { Trade } from '../../interfaces/trade';
 
 @Component({
   selector: 'my-trade-search',
@@ -16,7 +16,8 @@ import { Trade } from './interfaces/trade';
   styleUrls: ['./trade-search.component.css'],
   providers: [tradeSearchService]
 })
-export class tradeSearchComponent implements OnInit {
+
+export class TradeSearchComponent implements OnInit {
   trades: Observable<Trade[]>;
   private searchTerms = new Subject<string>();
 

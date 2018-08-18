@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { tradeService } from './trade.service';
-import { Trade } from './interfaces/trade';
+import { TradeService } from '../../trade.service';
+import { Trade } from '../../interfaces/trade';
 
 @Component({
   selector: 'my-trades',
@@ -15,7 +15,7 @@ export class TradesComponent implements OnInit {
   error: any;
   showNgFor = false;
 
-  constructor(private router: Router, private tradeService: tradeService) {}
+  constructor(private router: Router, private tradeService: TradeService) {}
 
   gettrades(): void {
     this.tradeService
