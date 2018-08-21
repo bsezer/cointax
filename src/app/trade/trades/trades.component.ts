@@ -13,9 +13,9 @@ export class TradesComponent implements OnInit {
   public selectedTrade: Trade;
   public tradeToAdd: Trade;
   public editTradeId: number;
-  addingTrade = false;
   error: any;
   showNgFor = false;
+  selected = 'option2';
 
   constructor(private router: Router, private tradeService: TradeService) {}
 
@@ -28,13 +28,14 @@ export class TradesComponent implements OnInit {
       )
   }
 
+  events: string[] = [];
+
   addtrade(): void {
-    this.addingTrade = true;
     this.selectedTrade = null;
+    this.save();
   }
 
   close(savedTrade: Trade): void {
-    this.addingTrade = false;
     if (savedTrade) {
       this.gettrades();
     }
@@ -58,17 +59,15 @@ export class TradesComponent implements OnInit {
   ngOnInit(): void {
     this.gettrades();
     this.editTradeId = -1;
-    this.tradeToAdd = new Trade();
+    this.resetTradeToAdd();
   }
 
   onSelect(trade: Trade): void {
     this.selectedTrade = trade;
-    this.addingTrade = false;
   }
 
   cancel(): void {
-    this.tradeToAdd = new Trade()
-    this.addingTrade = false;
+    this.resetTradeToAdd();
   }
 
   save(): void {
@@ -76,16 +75,28 @@ export class TradesComponent implements OnInit {
     this.tradeService.save(this.tradeToAdd).subscribe(trade => {
       this.tradeToAdd = trade; // saved herro, w/ id if new
       this.trades.push(trade);
-      this.tradeToAdd = new Trade();
-      this.addingTrade = false;
+      this.resetTradeToAdd();
     }, error => (this.error = error)); // TODO: Display error message
+  }
+
+  resetTradeToAdd(): void {
+    this.tradeToAdd = new Trade();
+    this.tradeToAdd.tradeType = 'Trade';
+    this.tradeToAdd.buyAmount = 0;
+    this.tradeToAdd.buyCurrency = 'USD';
+    this.tradeToAdd.sellAmount = 0;
+    this.tradeToAdd.sellCurrency = 'BTC';
+    this.tradeToAdd.tradingFeeCurrency = 'BTC';
+    this.tradeToAdd.tradingFeeAmount = 0;
+    this.tradeToAdd.transactionDate = '10-07-2018';
   }
 
   cancelEditTrade(): void {
     this.editTradeId = -1;
     this.gettrades();
+    this.resetTradeToAdd();
   }
-
+  
   saveEditTrade(trade: Trade, event: any): void {
     event.stopPropagation();
     console.log('Editing trade with id ' + trade.id);

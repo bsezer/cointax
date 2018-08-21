@@ -8,70 +8,207 @@
         <table class="table">
           <thead class="thead-dark">
             <tr class="row">
-              <th class="col-1" scope="col">#</th>
-              <th class="col-1" scope="col">Name</th>
-              <th class="col-1" scope="col">Trade Type</th>
-              <th class="col-1" scope="col">Transaction Date</th>
-              <th class="col-1" scope="col">Buy Amount</th>
-              <th class="col-1" scope="col">Currency</th>
-              <th class="col-1" scope="col">Sell Amount</th>
-              <th class="col-1" scope="col">Currency</th>
-              <th class="col-1" scope="col">Trading Fee Amount</th>
-              <th class="col-1" scope="col">Trading Fee Currency</th>
-              <th class="col-1" scope="col"></th>
-              <th class="col-1" scope="col"></th>
+              <th class="col-2" scope="col">Trade Type</th>
+              <th class="col-2" scope="col">Transaction Date</th>
+              <th class="col-2" scope="col">Buy</th>
+              <th class="col-2" scope="col">Sell</th>
+              <th class="col-2" scope="col">Trading Fee</th>
+              <th class="col-2" scope="col"></th>
             </tr>
           </thead>
           <tbody>
             <tr class="row from-row" *ngFor="let trade of trades" (click)="onSelect(trade)" [class.selected]="trade === selectedtrade">
-              <td class="col">              
-                <span scope="row" class="badge">{{trade.id}}</span> 
+              <td class="col-2" scope="row">
+                <button name="tradeTypeButton" *ngIf="trade.id !== editTradeId" type="button" class="btn btn-primary btn-md dropdown-toggle" disabled>{{trade.tradeType}}</button>
+                <div *ngIf="trade.id === editTradeId" class="dropdown">
+                  <button class="btn btn-light btn-md dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{trade.tradeType}}
+                  </button>
+                  <!--TODO Have to wire in the links-->
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <a class="dropdown-item" (click)="trade.tradeType = 'Trade'">Trade</a>
+                    <a class="dropdown-item" (click)="trade.tradeType = 'Transfer'">Transfer</a>
+                    <a class="dropdown-item" (click)="trade.tradeType = 'Deposit'" >Deposit</a>
+                    <a class="dropdown-item" (click)="trade.tradeType =  'Withdrawel'" >Withdrawel</a>
+                  </div>
+                </div>
               </td>
-              <td class="col-1" scope="row"><p *ngIf="trade.id !== editTradeId">{{trade.name}}</p><input class="form-control" *ngIf="trade.id === editTradeId" [(ngModel)]="trade.name" type="text"></td>
-              <td class="col-1" scope="row"><p *ngIf="trade.id !== editTradeId">{{trade.tradeType}}</p><input class="form-control" *ngIf="trade.id === editTradeId"  [(ngModel)]="trade.tradeType" type="text"></td>
-              <td class="col-1" scope="row"><p *ngIf="trade.id !== editTradeId">{{trade.transactionDate}}</p><input class="form-control" *ngIf="trade.id === editTradeId"  [(ngModel)]="trade.transactionDate" type="text"></td>
-              <td class="col-1" scope="row"><p *ngIf="trade.id !== editTradeId">{{trade.buyAmount}}</p><input class="form-control" *ngIf="trade.id === editTradeId"  [(ngModel)]="trade.buyAmount" type="text"></td>
-              <td class="col-1" scope="row"><p *ngIf="trade.id !== editTradeId">{{trade.buyCurrency}}</p><input class="form-control" *ngIf="trade.id === editTradeId"  [(ngModel)]="trade.buyCurrency" type="text"></td>
-              <td class="col-1" scope="row"><p *ngIf="trade.id !== editTradeId">{{trade.sellAmount}}</p><input class="form-control" *ngIf="trade.id === editTradeId"  [(ngModel)]="trade.sellAmount" type="text"></td>
-              <td class="col-1" scope="row"><p *ngIf="trade.id !== editTradeId">{{trade.sellCurrency}}</p><input class="form-control" *ngIf="trade.id === editTradeId"  [(ngModel)]="trade.sellCurrency" type="text"></td>     
-              <td class="col-1" scope="row"><p *ngIf="trade.id !== editTradeId">{{trade.tradingFeeAmount}}</p><input class="form-control" *ngIf="trade.id === editTradeId"  [(ngModel)]="trade.tradingFeeAmount" type="text"></td>
-              <td class="col-1" scope="row"><p *ngIf="trade.id !== editTradeId">{{trade.tradingFeeCurrency}}</p><input class="form-control" *ngIf="trade.id === editTradeId"  [(ngModel)]="trade.tradingFeeCurrency" type="text"></td>
-              <td *ngIf="trade.id !== editTradeId" class="col-1" scope="row">
-                  <button class="delete-button form-control" (click)="deletetrade(trade, $event)">Delete</button>
+              <td class="col-2" scope="row">
+                <p class="h5" *ngIf="trade.id !== editTradeId">{{trade.transactionDate}}</p>
+                <input type="datetime-local" *ngIf="trade.id === editTradeId" [(ngModel)]="trade.transactionDate" name="editTradeTransactionDate" class="form-control">
               </td>
-              <td *ngIf="trade.id !== editTradeId"  class="col-1"scope="row">
-                  <button class="save-button form-control" (click)="edittrade(trade, $event)">Edit</button>
+              <td class="col-2" scope="row">
+                  <div class="input-group" disabled>
+                    <p class="h5" *ngIf="trade.id !== editTradeId">
+                      {{trade.buyAmount}}
+                    </p>
+                    <input *ngIf="trade.id === editTradeId" class="form-control" [(ngModel)]="trade.buyAmount" type="number">
+                    <div class="input-group-prepend">
+                      <p class="h5" *ngIf="trade.id !== editTradeId">
+                        {{trade.buyCurrency}}
+                      </p>
+                      <div *ngIf="trade.id === editTradeId" class="dropdown">
+                        <button class="btn btn-light btn-md dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                          {{trade.buyCurrency}}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                          <a class="dropdown-item" (click)="trade.buyCurrency = 'BTC'">BTC</a>
+                          <a class="dropdown-item" (click)="trade.buyCurrency = 'ETH'">ETH</a>
+                          <a class="dropdown-item" (click)="trade.buyCurrency = 'XRP'">XRP</a>
+                          <a class="dropdown-item" (click)="trade.buyCurrency = 'EOS'">EOS</a>
+                          <a class="dropdown-item" (click)="trade.buyCurrency = 'LTC'">LTC</a>
+                          <a class="dropdown-item" (click)="trade.buyCurrency = 'IOTA'">IOTA</a>
+                        </div>
+                      </div>                    
+                    </div>
+                  </div>      
               </td>
-              <td *ngIf="trade.id === editTradeId"  class="col-1" scope="row">
-                <button class="delete-button form-control" (click)="cancelEditTrade()">Cancel</button>
+              <td class="col-2" scope="row">
+                <div class="input-group" disabled>
+                  <p class="h5" *ngIf="trade.id !== editTradeId">
+                    {{trade.sellAmount}}
+                  </p>
+                  <input *ngIf="trade.id === editTradeId" class="form-control" [(ngModel)]="trade.sellAmount" type="number">
+                  <div class="input-group-prepend">
+                    <p class="h5" *ngIf="trade.id !== editTradeId">
+                      {{trade.sellCurrency}}
+                    </p>
+                    <div *ngIf="trade.id === editTradeId" class="dropdown">
+                      <button class="btn btn-light btn-md dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                        {{trade.sellCurrency}}
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                        <a class="dropdown-item" (click)="trade.sellCurrency = 'BTC'">BTC</a>
+                        <a class="dropdown-item" (click)="trade.sellCurrency = 'ETH'">ETH</a>
+                        <a class="dropdown-item" (click)="trade.sellCurrency = 'XRP'">XRP</a>
+                        <a class="dropdown-item" (click)="trade.sellCurrency = 'EOS'">EOS</a>
+                        <a class="dropdown-item" (click)="trade.sellCurrency = 'LTC'">LTC</a>
+                        <a class="dropdown-item" (click)="trade.sellCurrency = 'IOTA'">IOTA</a>
+                      </div>
+                    </div>                    
+                  </div>
+                </div>    
               </td>
-              <td *ngIf="trade.id === editTradeId"  class="col-1" scope="row">
-                <button class="save-button form-control" (click)="saveEditTrade(trade, $event)">Save</button>
+              <td class="col-2" scope="row">
+                <div class="input-group" disabled>
+                  <p class="h5" *ngIf="trade.id !== editTradeId">
+                    {{trade.tradingFeeAmount}}
+                  </p>
+                  <input *ngIf="trade.id === editTradeId" class="form-control" [(ngModel)]="trade.tradingFeeAmount" type="number">
+                  <div class="input-group-prepend">
+                    <p class="h5" *ngIf="trade.id !== editTradeId">
+                      {{trade.tradingFeeCurrency}}
+                    </p>
+                    <div *ngIf="trade.id === editTradeId" class="dropdown">
+                      <button class="btn btn-light btn-md dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                        {{trade.tradingFeeCurrency}}
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                        <a class="dropdown-item" (click)="trade.tradingFeeCurrency = 'BTC'">BTC</a>
+                        <a class="dropdown-item" (click)="trade.tradingFeeCurrency = 'ETH'">ETH</a>
+                        <a class="dropdown-item" (click)="trade.tradingFeeCurrency = 'XRP'">XRP</a>
+                        <a class="dropdown-item" (click)="trade.tradingFeeCurrency = 'EOS'">EOS</a>
+                        <a class="dropdown-item" (click)="trade.tradingFeeCurrency = 'LTC'">LTC</a>
+                        <a class="dropdown-item" (click)="trade.tradingFeeCurrency = 'IOTA'">IOTA</a>
+                      </div>
+                    </div>                    
+                  </div>
+                </div>  
               </td>
-              <div class="error" *ngIf="error">{{error}}</div>
+              <td class="col-2" scope="row">
+                <div *ngIf="trade.id === editTradeId" class="btn-group-sm" role="group" aria-label="Basic example">
+                  <button class="btn btn-danger btn-sm" (click)="cancelEditTrade()"><i class="fas fa-minus-circle"></i></button>
+                  <button class="btn btn-primary btn-sm" (click)="saveEditTrade(trade, $event)"><i class="fas fa-save"></i>                  </button>
+                </div>
+                <div *ngIf="trade.id !== editTradeId"  class="btn-group-sm"  role="group" aria-label="Basic example">
+                  <button class="btn btn-danger btn-sm" (click)="deletetrade(trade, $event)"><i class="fas fa-trash-alt"></i></button>
+                  <button class="btn btn-primary btn-sm" (click)="edittrade(trade, $event)"><i class="fas fa-edit"></i>                  </button>
+                </div>
+              </td>
             </tr>
-            <br>
             <tr class="row from-row">
-              <td class="col-1" scope="row">
-                <span scope="row" class="badge">#</span> 
+              <td class="col-2" scope="row">
+                  <div class="dropdown">
+                    <button class="btn btn-primary btn-md dropdown-toggle" type="button" id="dropdownMenuButton10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                      {{tradeToAdd.tradeType}}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton10">
+                      <a class="dropdown-item" (click)="tradeToAdd.tradeType = 'Trade'">Trade</a>
+                      <a class="dropdown-item" (click)="tradeToAdd.tradeType = 'Transfer'">Transfer</a>
+                      <a class="dropdown-item" (click)="tradeToAdd.tradeType = 'Deposit'" >Deposit</a>
+                      <a class="dropdown-item" (click)="tradeToAdd.tradeType = 'Withdrawel'" >Withdrawel</a>
+                    </div>
+                </div>
               </td>
-            <!-- <tr class="d-flex" (click)="onSelect(trade)" [class.selected]="trade === selectedtrade"> -->
-              <td class="col-1" scope="row"><input class="form-control" disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.name" type="text"></td>
-              <td class="col-1" scope="row"><input class="form-control" disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.tradeType" type="text"></td>
-              <td class="col-1" scope="row"><input class="form-control" disabled="{{!addingTrade}}"  [(ngModel)]="tradeToAdd.transactionDate" type="text"></td>
-              <td class="col-1" scope="row"><input class="form-control" disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.buyAmount" type="text"></td>
-              <td class="col-1" scope="row"><input class="form-control" disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.buyCurrency" type="text"></td>
-              <td class="col-1" scope="row"><input class="form-control" disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.sellAmount" type="text"></td>
-              <td class="col-1" scope="row"><input class="form-control" disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.sellCurrency" type="text"></td>     
-              <td class="col-1" scope="row"><input class="form-control" disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.tradingFeeAmount" type="text" ></td>
-              <td class="col-1" scope="row"><input class="form-control" disabled="{{!addingTrade}}" [(ngModel)]="tradeToAdd.tradingFeeCurrency" type="text"></td>
-              <td class="col-1" scope="row">
-                <button class="form-control delete-button" *ngIf="addingTrade" (click)="cancel()">Cancel</button>
+              <td class="col-2" scope="row">
+                <input type="datetime-local" [(ngModel)]="tradeToAdd.transactionDate" name="addToTradeTransactionTrade" class="form-control">
               </td>
-              <td class="col-1" scope="row">
-                <button class="form-control save-button" *ngIf="addingTrade" (click)="save()">Save</button>
-                <button class="form-control save-button" *ngIf="!addingTrade" (click)="addtrade()">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="false">Add</span> 
+              <td class="col-2" scope="row">
+                <div class="input-group" disabled>
+                  <input class="form-control" [(ngModel)]="tradeToAdd.buyAmount" type="number">
+                  <div class="input-group-prepend">
+                    <div class="dropdown">
+                      <button class="btn btn-light btn-md dropdown-toggle" type="button" id="dropdownMenuButton7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                        {{tradeToAdd.buyCurrency}}
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
+                        <a class="dropdown-item" (click)="tradeToAdd.buyCurrency = 'BTC'">BTC</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.buyCurrency = 'ETH'">ETH</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.buyCurrency = 'XRP'">XRP</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.buyCurrency = 'EOS'">EOS</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.buyCurrency = 'LTC'">LTC</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.buyCurrency = 'IOTA'">IOTA</a>
+                      </div>
+                    </div>                    
+                  </div>
+                </div>
+              </td>
+              <td class="col-2" scope="row">
+                <div class="input-group" disabled>
+                  <input class="form-control" [(ngModel)]="tradeToAdd.sellAmount" type="number">
+                  <div class="input-group-prepend">
+                    <div class="dropdown">
+                      <button class="btn btn-light btn-md dropdown-toggle" type="button" id="dropdownMenuButton8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                        {{tradeToAdd.buyCurrency}}
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton8">
+                        <a class="dropdown-item" (click)="tradeToAdd.sellCurrency = 'BTC'">BTC</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.sellCurrency = 'ETH'">ETH</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.sellCurrency = 'XRP'">XRP</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.sellCurrency = 'EOS'">EOS</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.sellCurrency = 'LTC'">LTC</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.sellCurrency = 'IOTA'">IOTA</a>
+                      </div>
+                    </div>                    
+                  </div>
+                </div>
+              </td>
+              <td class="col-2" scope="row">
+                <div class="input-group" disabled>
+                  <input class="form-control" [(ngModel)]="tradeToAdd.tradingFeeAmount" type="number">
+                  <div class="input-group-prepend">
+                    <div class="dropdown">
+                      <button class="btn btn-light btn-md dropdown-toggle" type="button" id="dropdownMenuButton9" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                        {{tradeToAdd.buyCurrency}}
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton9">
+                        <a class="dropdown-item" (click)="tradeToAdd.tradeFeeCurrency = 'BTC'">BTC</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.tradeFeeCurrency = 'ETH'">ETH</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.tradeFeeCurrency = 'XRP'">XRP</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.tradeFeeCurrency = 'EOS'">EOS</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.tradeFeeCurrency = 'LTC'">LTC</a>
+                        <a class="dropdown-item" (click)="tradeToAdd.tradeFeeCurrency = 'IOTA'">IOTA</a>
+                      </div>
+                    </div>                    
+                  </div>
+                </div>
+              </td>
+              <td class="col-2" scope="row">
+                <button class="btn btn-danger btn-sm" (click)="cancel()">
+                  <i class="fas fa-minus-circle"></i>
+                </button>
+                <button class="btn btn-primary btn-sm" (click)="addtrade()">
+                  <i class="far fa-plus-square fa-lg"></i>                
                 </button>
               </td>
               <div class="error" *ngIf="error">{{error}}</div>
@@ -79,44 +216,8 @@
           </tbody>
         </table>
       </div>
-      <a href="#" class="btn btn-primary">Submit Trades</a>
   </div>
   <div class="card-footer text-muted">
     2 days ago
   </div>
 </div>
-
-
-<!-- <div class="error" *ngIf="error">{{error}}</div>
-<button (click)="addtrade()">Add New Trade</button>
-<div *ngIf="addingTrade">
-  <my-trade-detail (close)="close($event)"></my-trade-detail>
-</div> -->
-
-<!-- <div *ngIf="selectedtrade">
-  <h2>
-    {{selectedtrade.name | uppercase}} is my trade
-  </h2>
-  <button (click)="gotoDetail()">View Details</button>
-</div>
-
-<div>
-  <style>
-    .hidden { visibility: hidden}
-  </style>
-  <h4>ngFor Features</h4>
-  <button (click)="showNgFor=!showNgFor">{{showNgFor ? 'Hide' : 'Show'}} ngFor Features</button>
-  <table [class.hidden]="!showNgFor">
-    <tbody>
-      <tr *ngFor="let trade of trades; let ix = index; let c = count; let e = even; let o = odd; let f = first; let l = last">
-        <td>{{trade.name}}</td>
-        <td>{{ix}}</td>
-        <td>{{c}}</td>
-        <td>{{e}}</td>
-        <td>{{o}}</td>
-        <td>{{f}}</td>
-        <td>{{l}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->
