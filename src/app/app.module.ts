@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { HttpClientInMemoryWebApiModule, InMemoryDbService } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
-// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TradesComponent } from './trade/trades/trades.component';
 import { TradeDetailComponent } from './trade/trade-detail/trade-detail.component';
 import { TradeSearchComponent } from './trade/trade-search/trade-search.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -33,6 +33,7 @@ import { TradeSearchComponent } from './trade/trade-search/trade-search.componen
     TradeSearchComponent,
     TradesComponent,
     TradeDetailComponent,
+    LoginComponent,
   ],
   providers: [TradeService],
   bootstrap: [AppComponent]

@@ -1,0 +1,31 @@
+<span>
+</span>
+<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group" role="group" aria-label="First group">
+    <button type="button" class="btn btn-primary">
+      <a class="btn btn-primary nav-item nav-link" routerLink="/dashboard">{{title}}</a>
+    </button>
+  </div>
+  <div class="input-group">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-sm btn-primary nav-item nav-link" data-toggle="modal" data-target="#loginModal">
+        Log In
+    </button>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-sm btn-secondary nav-item nav-link" data-toggle="modal" data-target="#signUpModal">
+        Sign Up
+    </button>
+  </div>
+</div>
+<nav class="nav nav-pills nav-fill">
+  <a class="btn btn-primary nav-item nav-link" routerLink="/dashboard">Import Trades</a>
+  <a class="btn btn-primary nav-item nav-link" routerLink="/trades">Trades List</a>
+  <a class="btn btn-primary nav-item nav-link" routerLink="/trades">Calculate Tax</a>
+  <a class="btn btn-primary nav-item nav-link" routerLink="/trades">About</a>
+  <a class="btn btn-primary nav-item nav-link" data-toggle="modal" data-target="#loginModal">Log In</a>
+</nav>
+<br>
+<div class="header-bar"></div>
+<br>
+<my-login></my-login>
+<router-outlet></router-outlet>
