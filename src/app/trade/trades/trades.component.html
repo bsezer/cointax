@@ -1,9 +1,5 @@
 <div class="card text-center">
-  <div class="card-header">
-    <h2>My trades</h2>
-  </div>
   <div class="card-body">
-    <!-- <h5 class="card-title">Special title treatment</h5> -->
       <div class="trades">
         <table class="table">
           <thead class="thead-dark">
@@ -38,82 +34,13 @@
                 <input type="datetime-local" *ngIf="trade.id === editTradeId" [(ngModel)]="trade.transactionDate" name="editTradeTransactionDate" class="form-control">
               </td>
               <td class="col-2" scope="row">
-                  <div class="input-group" disabled>
-                    <p class="h5" *ngIf="trade.id !== editTradeId">
-                      {{trade.buyAmount}}
-                    </p>
-                    <input *ngIf="trade.id === editTradeId" class="form-control" [(ngModel)]="trade.buyAmount" type="number">
-                    <div class="input-group-prepend">
-                      <p class="h5" *ngIf="trade.id !== editTradeId">
-                        {{trade.buyCurrency}}
-                      </p>
-                      <div *ngIf="trade.id === editTradeId" class="dropdown">
-                        <button class="btn btn-light btn-md dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                          {{trade.buyCurrency}}
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                          <a class="dropdown-item" (click)="trade.buyCurrency = 'BTC'">BTC</a>
-                          <a class="dropdown-item" (click)="trade.buyCurrency = 'ETH'">ETH</a>
-                          <a class="dropdown-item" (click)="trade.buyCurrency = 'XRP'">XRP</a>
-                          <a class="dropdown-item" (click)="trade.buyCurrency = 'EOS'">EOS</a>
-                          <a class="dropdown-item" (click)="trade.buyCurrency = 'LTC'">LTC</a>
-                          <a class="dropdown-item" (click)="trade.buyCurrency = 'IOTA'">IOTA</a>
-                        </div>
-                      </div>                    
-                    </div>
-                  </div>      
+                <my-transaction [transaction]="trade.buy" [isEditMode]="trade.id !== editTradeId"></my-transaction>
               </td>
               <td class="col-2" scope="row">
-                <div class="input-group" disabled>
-                  <p class="h5" *ngIf="trade.id !== editTradeId">
-                    {{trade.sellAmount}}
-                  </p>
-                  <input *ngIf="trade.id === editTradeId" class="form-control" [(ngModel)]="trade.sellAmount" type="number">
-                  <div class="input-group-prepend">
-                    <p class="h5" *ngIf="trade.id !== editTradeId">
-                      {{trade.sellCurrency}}
-                    </p>
-                    <div *ngIf="trade.id === editTradeId" class="dropdown">
-                      <button class="btn btn-light btn-md dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                        {{trade.sellCurrency}}
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                        <a class="dropdown-item" (click)="trade.sellCurrency = 'BTC'">BTC</a>
-                        <a class="dropdown-item" (click)="trade.sellCurrency = 'ETH'">ETH</a>
-                        <a class="dropdown-item" (click)="trade.sellCurrency = 'XRP'">XRP</a>
-                        <a class="dropdown-item" (click)="trade.sellCurrency = 'EOS'">EOS</a>
-                        <a class="dropdown-item" (click)="trade.sellCurrency = 'LTC'">LTC</a>
-                        <a class="dropdown-item" (click)="trade.sellCurrency = 'IOTA'">IOTA</a>
-                      </div>
-                    </div>                    
-                  </div>
-                </div>    
+                <my-transaction [transaction]="trade.sell" [isEditMode]="trade.id !== editTradeId"></my-transaction>
               </td>
               <td class="col-2" scope="row">
-                <div class="input-group" disabled>
-                  <p class="h5" *ngIf="trade.id !== editTradeId">
-                    {{trade.tradingFeeAmount}}
-                  </p>
-                  <input *ngIf="trade.id === editTradeId" class="form-control" [(ngModel)]="trade.tradingFeeAmount" type="number">
-                  <div class="input-group-prepend">
-                    <p class="h5" *ngIf="trade.id !== editTradeId">
-                      {{trade.tradingFeeCurrency}}
-                    </p>
-                    <div *ngIf="trade.id === editTradeId" class="dropdown">
-                      <button class="btn btn-light btn-md dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                        {{trade.tradingFeeCurrency}}
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                        <a class="dropdown-item" (click)="trade.tradingFeeCurrency = 'BTC'">BTC</a>
-                        <a class="dropdown-item" (click)="trade.tradingFeeCurrency = 'ETH'">ETH</a>
-                        <a class="dropdown-item" (click)="trade.tradingFeeCurrency = 'XRP'">XRP</a>
-                        <a class="dropdown-item" (click)="trade.tradingFeeCurrency = 'EOS'">EOS</a>
-                        <a class="dropdown-item" (click)="trade.tradingFeeCurrency = 'LTC'">LTC</a>
-                        <a class="dropdown-item" (click)="trade.tradingFeeCurrency = 'IOTA'">IOTA</a>
-                      </div>
-                    </div>                    
-                  </div>
-                </div>  
+                <my-transaction [transaction]="trade.tradingFee" [isEditMode]="trade.id !== editTradeId"></my-transaction>
               </td>
               <td class="col-2" scope="row">
                 <div *ngIf="trade.id === editTradeId" class="btn-group-sm" role="group" aria-label="Basic example">
@@ -144,64 +71,13 @@
                 <input type="datetime-local" [(ngModel)]="tradeToAdd.transactionDate" name="addToTradeTransactionTrade" class="form-control">
               </td>
               <td class="col-2" scope="row">
-                <div class="input-group" disabled>
-                  <input class="form-control" [(ngModel)]="tradeToAdd.buyAmount" type="number">
-                  <div class="input-group-prepend">
-                    <div class="dropdown">
-                      <button class="btn btn-light btn-md dropdown-toggle" type="button" id="dropdownMenuButton7" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                        {{tradeToAdd.buyCurrency}}
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
-                        <a class="dropdown-item" (click)="tradeToAdd.buyCurrency = 'BTC'">BTC</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.buyCurrency = 'ETH'">ETH</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.buyCurrency = 'XRP'">XRP</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.buyCurrency = 'EOS'">EOS</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.buyCurrency = 'LTC'">LTC</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.buyCurrency = 'IOTA'">IOTA</a>
-                      </div>
-                    </div>                    
-                  </div>
-                </div>
+                <my-transaction [transaction]="tradeToAdd.buy" [isEditMode]="false"></my-transaction>
               </td>
               <td class="col-2" scope="row">
-                <div class="input-group" disabled>
-                  <input class="form-control" [(ngModel)]="tradeToAdd.sellAmount" type="number">
-                  <div class="input-group-prepend">
-                    <div class="dropdown">
-                      <button class="btn btn-light btn-md dropdown-toggle" type="button" id="dropdownMenuButton8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                        {{tradeToAdd.buyCurrency}}
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton8">
-                        <a class="dropdown-item" (click)="tradeToAdd.sellCurrency = 'BTC'">BTC</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.sellCurrency = 'ETH'">ETH</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.sellCurrency = 'XRP'">XRP</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.sellCurrency = 'EOS'">EOS</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.sellCurrency = 'LTC'">LTC</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.sellCurrency = 'IOTA'">IOTA</a>
-                      </div>
-                    </div>                    
-                  </div>
-                </div>
+                <my-transaction [transaction]="tradeToAdd.sell" [isEditMode]="false"></my-transaction>
               </td>
               <td class="col-2" scope="row">
-                <div class="input-group" disabled>
-                  <input class="form-control" [(ngModel)]="tradeToAdd.tradingFeeAmount" type="number">
-                  <div class="input-group-prepend">
-                    <div class="dropdown">
-                      <button class="btn btn-light btn-md dropdown-toggle" type="button" id="dropdownMenuButton9" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                        {{tradeToAdd.buyCurrency}}
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton9">
-                        <a class="dropdown-item" (click)="tradeToAdd.tradeFeeCurrency = 'BTC'">BTC</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.tradeFeeCurrency = 'ETH'">ETH</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.tradeFeeCurrency = 'XRP'">XRP</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.tradeFeeCurrency = 'EOS'">EOS</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.tradeFeeCurrency = 'LTC'">LTC</a>
-                        <a class="dropdown-item" (click)="tradeToAdd.tradeFeeCurrency = 'IOTA'">IOTA</a>
-                      </div>
-                    </div>                    
-                  </div>
-                </div>
+                <my-transaction [transaction]="tradeToAdd.tradingFee" [isEditMode]="false"></my-transaction>
               </td>
               <td class="col-2" scope="row">
                 <button class="btn btn-danger btn-sm" (click)="cancel()">

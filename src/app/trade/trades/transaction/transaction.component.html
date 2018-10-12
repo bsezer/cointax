@@ -1,0 +1,24 @@
+<div class="input-group" disabled>
+  <p class="h5" *ngIf="isEditMode">
+    {{transaction.amount}}
+  </p>
+  <input *ngIf="!isEditMode" class="form-control" [(ngModel)]="transaction.amount" type="number">
+  <div class="input-group-prepend">
+    <p class="h5" *ngIf="isEditMode">
+      {{transaction.currency}}
+    </p>
+    <div *ngIf="!isEditMode" class="dropdown">
+      <button class="btn btn-light btn-md dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+        {{transaction.currency}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+        <a class="dropdown-item" (click)="transaction.currency = 'BTC'">BTC</a>
+        <a class="dropdown-item" (click)="transaction.currency = 'ETH'">ETH</a>
+        <a class="dropdown-item" (click)="transaction.currency = 'XRP'">XRP</a>
+        <a class="dropdown-item" (click)="transaction.currency = 'EOS'">EOS</a>
+        <a class="dropdown-item" (click)="transaction.currency = 'LTC'">LTC</a>
+        <a class="dropdown-item" (click)="transaction.currency = 'IOTA'">IOTA</a>
+      </div>
+    </div>                    
+  </div>
+</div>   

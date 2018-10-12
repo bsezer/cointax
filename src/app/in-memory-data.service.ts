@@ -8,12 +8,18 @@ export class InMemoryDataService {
         name: 'Bob the king',
         tradeType: "Trade",
         transactionDate: "10-07-2018",
-        buyAmount: 20,
-        buyCurrency: "BTC",
-        sellAmount: 2000,
-        sellCurrency: "USD",
-        tradingFeeAmount: 20,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 20,
+          currency : "BTC"
+        },
+        sell: {
+          amount : 2000,
+          currency : "USD"
+        },
+        tradingFee: {
+          amount : 20,
+          currency : "USD"
+        },
         other: "Lorem ipsum dolor sit amet, ex dolorem officiis convenire usu."
       },
       {
@@ -21,12 +27,18 @@ export class InMemoryDataService {
         name: 'Nicholas DuBuque',
         tradeType: "Trade",
         transactionDate: "10-09-2018",
-        buyAmount: 3,
-        buyCurrency: "BTC",
-        sellAmount: 400,
-        sellCurrency: "USD",
-        tradingFeeAmount: 10,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 3,
+          currency : "BTC"
+        },
+        sell: {
+          amount : 400,
+          currency : "USD"
+        },
+        tradingFee: {
+          amount : 10,
+          currency : "USD"
+        },
         other: "Ex dolorem officiis convenire usu."
       },
       {
@@ -34,12 +46,18 @@ export class InMemoryDataService {
         name: 'Niche Name',
         tradeType: "Trade",
         transactionDate: "12-07-2018",
-        buyAmount: 50,
-        buyCurrency: "ETH",
-        sellAmount: 280,
-        sellCurrency: "USD",
-        tradingFeeAmount: 8,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 50,
+          currency : "ETH"
+        },
+        sell: {
+          amount : 280,
+          currency : "USD"
+        },
+        tradingFee: {
+          amount : 10,
+          currency : "USD"
+        },
         other: "Officiis convenire usu."
       },
       {
@@ -47,12 +65,18 @@ export class InMemoryDataService {
         name: 'Brock Lesner',
         tradeType: "Trade",
         transactionDate: "7-07-2018",
-        buyAmount: 2,
-        buyCurrency: "BTC",
-        sellAmount: 800,
-        sellCurrency: "USD",
-        tradingFeeAmount: 2,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 2,
+          currency : "BTC"
+        },
+        sell: {
+          amount : 800,
+          currency : "USD"
+        },
+        tradingFee: {
+          amount : 2,
+          currency : "USD"
+        },
         other: "Ipsum dolor sit amet, convenire usu."
       },
       {
@@ -60,12 +84,18 @@ export class InMemoryDataService {
         name: 'Nicholas DuBuque',
         tradeType: "Trade",
         transactionDate: "9-07-2018",
-        buyAmount: 15,
-        buyCurrency: "ETH",
-        sellAmount: 20,
-        sellCurrency: "USD",
-        tradingFeeAmount: 20,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 15,
+          currency : "ETH"
+        },
+        sell: {
+          amount : 20,
+          currency : "USD"
+        },
+        tradingFee: {
+          amount : 20,
+          currency : "USD"
+        },
         other: "Lorem ipsum dolor sit amet, ex dolorem officiis convenire usu."
       },
       {
@@ -73,12 +103,18 @@ export class InMemoryDataService {
         name: 'Bob the king',
         tradeType: "Trade",
         transactionDate: "10-07-2018",
-        buyAmount: 20,
-        buyCurrency: "BTC",
-        sellAmount: 2000,
-        sellCurrency: "USD",
-        tradingFeeAmount: 20,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 20,
+          currency : "BTC"
+        },
+        sell: {
+          amount : 2000,
+          currency : "USD"
+        },
+        tradingFee: {
+          amount : 20,
+          currency : "USD"
+        },
         other: "Lorem ipsum dolor sit amet, ex dolorem officiis convenire usu."
       },
       {
@@ -86,12 +122,18 @@ export class InMemoryDataService {
         name: 'Nicholas DuBuque',
         tradeType: "Trade",
         transactionDate: "10-09-2018",
-        buyAmount: 3,
-        buyCurrency: "BTC",
-        sellAmount: 400,
-        sellCurrency: "USD",
-        tradingFeeAmount: 10,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 3,
+          currency : "BTC"
+        },
+        sell: {
+          amount : 400,
+          currency : "USD"
+        },
+        tradingFee: {
+          amount : 10,
+          currency : "USD"
+        },
         other: "Ex dolorem officiis convenire usu."
       },
       {
@@ -99,12 +141,18 @@ export class InMemoryDataService {
         name: 'Niche Name',
         tradeType: "Trade",
         transactionDate: "12-07-2018",
-        buyAmount: 50,
-        buyCurrency: "ETH",
-        sellAmount: 280,
-        sellCurrency: "USD",
-        tradingFeeAmount: 8,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 50,
+          currency : "ETH"
+        },
+        sell: {
+          amount : 34,
+          currency : "USD"
+        },
+        tradingFee: {
+          amount : 8,
+          currency : "USD"
+        },
         other: "Officiis convenire usu."
       },
       {
@@ -112,12 +160,18 @@ export class InMemoryDataService {
         name: 'Brock Lesner',
         tradeType: "Trade",
         transactionDate: "7-07-2018",
-        buyAmount: 2,
-        buyCurrency: "BTC",
-        sellAmount: 800,
-        sellCurrency: "USD",
-        tradingFeeAmount: 2,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 6,
+          currency : "BTC"
+        },
+        sell: {
+          amount : 800,
+          currency : "USD"
+        },
+        tradingFee: {
+          amount : 8,
+          currency : "USD"
+        },
         other: "Ipsum dolor sit amet, convenire usu."
       },
       {
@@ -125,12 +179,18 @@ export class InMemoryDataService {
         name: 'Nicholas DuBuque',
         tradeType: "Trade",
         transactionDate: "9-07-2018",
-        buyAmount: 15,
-        buyCurrency: "ETH",
-        sellAmount: 20,
-        sellCurrency: "USD",
-        tradingFeeAmount: 20,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 15,
+          currency : "ETH"
+        },
+        sell: {
+          amount : 67,
+          currency : "USD"
+        },
+        tradingFee: {
+          amount : 23,
+          currency : "USD"
+        },
         other: "Lorem ipsum dolor sit amet, ex dolorem officiis convenire usu."
       },
       {
@@ -138,12 +198,18 @@ export class InMemoryDataService {
         name: 'Bob the king',
         tradeType: "Trade",
         transactionDate: "10-07-2018",
-        buyAmount: 20,
-        buyCurrency: "BTC",
-        sellAmount: 2000,
-        sellCurrency: "USD",
-        tradingFeeAmount: 20,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 20,
+          currency : "BTC"
+        },
+        sell: {
+          amount : 30,
+          currency : "USD"
+        },
+        tradingFee: {
+          amount : 5,
+          currency : "USD"
+        },
         other: "Lorem ipsum dolor sit amet, ex dolorem officiis convenire usu."
       },
       {
@@ -151,12 +217,18 @@ export class InMemoryDataService {
         name: 'Nicholas DuBuque',
         tradeType: "Trade",
         transactionDate: "10-09-2018",
-        buyAmount: 3,
-        buyCurrency: "BTC",
-        sellAmount: 400,
-        sellCurrency: "USD",
-        tradingFeeAmount: 10,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 3,
+          currency : "BTC"
+        },
+        sell: {
+          amount : 400,
+          currency : "USD"
+        },
+        tradingFee: {
+          amount : 5,
+          currency : "USD"
+        },
         other: "Ex dolorem officiis convenire usu."
       },
       {
@@ -164,12 +236,18 @@ export class InMemoryDataService {
         name: 'Niche Name',
         tradeType: "Trade",
         transactionDate: "12-07-2018",
-        buyAmount: 50,
-        buyCurrency: "ETH",
-        sellAmount: 280,
-        sellCurrency: "USD",
-        tradingFeeAmount: 8,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 30,
+          currency : "ETH"
+        },
+        sell: {
+          amount : 20,
+          currency : "USD"
+        },
+        tradingFee: {
+          amount : 5,
+          currency : "USD"
+        },
         other: "Officiis convenire usu."
       },
       {
@@ -177,12 +255,18 @@ export class InMemoryDataService {
         name: 'Brock Lesner',
         tradeType: "Trade",
         transactionDate: "7-07-2018",
-        buyAmount: 2,
-        buyCurrency: "BTC",
-        sellAmount: 800,
-        sellCurrency: "USD",
-        tradingFeeAmount: 2,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 3,
+          currency : "BTC"
+        },
+        sell: {
+          amount : 20,
+          currency : "ETH"
+        },
+        tradingFee: {
+          amount : 5,
+          currency : "USD"
+        },
         other: "Ipsum dolor sit amet, convenire usu."
       },
       {
@@ -190,15 +274,20 @@ export class InMemoryDataService {
         name: 'Nicholas DuBuque',
         tradeType: "Trade",
         transactionDate: "9-07-2018",
-        buyAmount: 15,
-        buyCurrency: "ETH",
-        sellAmount: 20,
-        sellCurrency: "USD",
-        tradingFeeAmount: 20,
-        tradingFeeCurrency: "USD",
+        buy: {
+          amount : 15,
+          currency : "ETH"
+        },
+        sell: {
+          amount : 3,
+          currency : "BTC"
+        },
+        tradingFee: {
+          amount : 50,
+          currency : "USD"
+        },
         other: "Lorem ipsum dolor sit amet, ex dolorem officiis convenire usu."
-      },
-      
+      }
     ];
     return { trades };
   }

@@ -3,11 +3,14 @@ export class Trade {
     name: string;
     tradeType: string;
     transactionDate: any;
-    buyAmount: number;
-    buyCurrency: string;
-    sellAmount: number;
-    sellCurrency: string;
-    tradingFeeAmount: number;
-    tradingFeeCurrency: string;
+    buy: Transaction;
+    sell: Transaction;
+    tradingFee: Transaction;
     other: string;
+}
+
+
+export class Transaction {
+    amount: number;
+    currency: string;
 }

@@ -20,8 +20,6 @@ export class TradeDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('Here');
-    //TODO save this for later
     this.route.params.forEach((params: Params) => {
       if (params['id'] !== undefined) {
         const id = +params['id'];

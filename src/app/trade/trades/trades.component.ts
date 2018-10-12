@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TradeService } from '../../trade.service';
-import { Trade } from '../../interfaces/trade';
+import { Trade, Transaction } from '../../interfaces/trade';
 
 @Component({
   selector: 'my-trades',
@@ -82,12 +82,15 @@ export class TradesComponent implements OnInit {
   resetTradeToAdd(): void {
     this.tradeToAdd = new Trade();
     this.tradeToAdd.tradeType = 'Trade';
-    this.tradeToAdd.buyAmount = 0;
-    this.tradeToAdd.buyCurrency = 'USD';
-    this.tradeToAdd.sellAmount = 0;
-    this.tradeToAdd.sellCurrency = 'BTC';
-    this.tradeToAdd.tradingFeeCurrency = 'BTC';
-    this.tradeToAdd.tradingFeeAmount = 0;
+    this.tradeToAdd.buy = new Transaction();
+    this.tradeToAdd.buy.amount = 0;
+    this.tradeToAdd.buy.currency = 'USD';
+    this.tradeToAdd.sell = new Transaction();
+    this.tradeToAdd.sell.amount = 0;
+    this.tradeToAdd.sell.currency = 'BTC';
+    this.tradeToAdd.tradingFee = new Transaction();
+    this.tradeToAdd.tradingFee.currency = 'BTC';
+    this.tradeToAdd.tradingFee.amount = 0;
     this.tradeToAdd.transactionDate = '10-07-2018';
   }
 

@@ -14,6 +14,7 @@ import { TradesComponent } from './trade/trades/trades.component';
 import { TradeDetailComponent } from './trade/trade-detail/trade-detail.component';
 import { TradeSearchComponent } from './trade/trade-search/trade-search.component';
 import { LoginComponent } from './login/login.component';
+import { TransactionComponent } from './trade/trades/transaction/transaction.component';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { LoginComponent } from './login/login.component';
     TradeSearchComponent,
     TradesComponent,
     TradeDetailComponent,
+    TransactionComponent,
     LoginComponent,
   ],
   providers: [TradeService],

@@ -1,0 +1,41 @@
+.selected {
+  background-color: #CFD8DC !important;
+  background-color: rgb(0,120,215) !important;
+  color: white;
+}
+
+.trades {
+  list-style-type: none;
+  padding: 0;
+}
+
+.trades .text {
+  position: relative;
+  top: -3px;
+}
+
+.trades .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: grey;
+  line-height: 1em;
+  position: relative;
+  height: 2.4em;
+}
+
+button:hover {
+  background-color: #cfd8dc;
+}
+
+.error {color:red;}
+
+.col-container {
+  display: table; /* Make the container element behave like a table */
+  width: 100%; /* Set full-width to expand the whole page */
+}
+
+.col {
+  display: table-cell; /* Make elements inside the container behave like table cells */
+}
